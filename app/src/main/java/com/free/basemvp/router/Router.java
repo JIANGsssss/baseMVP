@@ -14,7 +14,6 @@ import java.io.Serializable;
 import java.util.ArrayList;
 
 
-
 public class Router {
 
     private Intent intent;
@@ -42,6 +41,13 @@ public class Router {
 
     public Router to(Class<?> to) {
         this.to = to;
+        return this;
+    }
+
+    public Router addFlags(int flags) {
+        if (intent != null) {
+            intent.addFlags(flags);
+        }
         return this;
     }
 

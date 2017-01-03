@@ -1,5 +1,6 @@
 package com.free.basemvp.net;
 
+
 public class NetError extends Exception {
     private Throwable exception;
     private int type = NoConnectError;

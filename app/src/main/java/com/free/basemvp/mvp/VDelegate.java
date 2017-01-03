@@ -3,8 +3,12 @@ package com.free.basemvp.mvp;
 import android.view.View;
 
 
-
 public interface VDelegate {
+    void resume();
+
+    void pause();
+
+    void destory();
 
     void visible(boolean flag, View view);
     void gone(boolean flag, View view);
@@ -12,5 +16,4 @@ public interface VDelegate {
 
     void toastShort(String msg);
     void toastLong(String msg);
-
 }

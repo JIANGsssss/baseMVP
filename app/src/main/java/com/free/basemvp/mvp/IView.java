@@ -1,23 +1,22 @@
 package com.free.basemvp.mvp;
 
+import android.os.Bundle;
 import android.view.View;
 
 
 
-public interface IView<P extends IPresent> {
-
+public interface IView<P> {
     void bindUI(View rootView);
 
     void bindEvent();
 
-    int getLayoutId();
+    void initData(Bundle savedInstanceState);
 
     int getOptionsMenuId();
 
-    View getRootView();
+    int getLayoutId();
 
-    void attachP(P present);
+    boolean useEventBus();
 
-    void detach();
-
+    P newP();
 }

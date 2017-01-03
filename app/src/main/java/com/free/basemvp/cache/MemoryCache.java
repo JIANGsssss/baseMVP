@@ -4,7 +4,6 @@ import android.support.v4.util.LruCache;
 import android.text.TextUtils;
 
 
-
 public class MemoryCache implements ICache {
 
     private LruCache<String, Object> cache;

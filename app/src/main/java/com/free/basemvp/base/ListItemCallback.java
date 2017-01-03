@@ -1,6 +1,7 @@
 package com.free.basemvp.base;
 
 
+
 public abstract class ListItemCallback<T> {
 
     public void onItemClick(int position, T model, int tag) {}

@@ -1,5 +1,7 @@
 package com.free.basemvp.event;
 
+
+
 public class BusProvider {
 
     private static IBus bus;

@@ -7,7 +7,7 @@ import com.free.basemvp.router.Router;
 public class XDroidConf {
     // #log
     public static final boolean LOG = true;
-    public static final String LOG_TAG = "baseMVP";
+    public static final String LOG_TAG = "XDroid";
 
     // #cache
     public static final String CACHE_SP_NAME = "config";

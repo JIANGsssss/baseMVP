@@ -7,6 +7,7 @@ import android.view.ViewGroup;
 import java.util.List;
 
 
+
 public abstract class SimpleListAdapter<T, H> extends XListAdapter<T> {
 
     public SimpleListAdapter(Context context) {

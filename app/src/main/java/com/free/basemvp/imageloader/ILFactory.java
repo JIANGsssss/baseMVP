@@ -1,6 +1,5 @@
 package com.free.basemvp.imageloader;
 
-
 public class ILFactory {
 
     private static ILoader loader;

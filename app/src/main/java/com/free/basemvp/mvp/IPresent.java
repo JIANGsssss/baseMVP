@@ -1,17 +1,9 @@
 package com.free.basemvp.mvp;
 
-import android.content.Context;
-import android.os.Bundle;
 
 
-public interface IPresent<V>{
+public interface IPresent<V> {
+    void attachV(V view);
 
-    boolean useEventBus();
-
-    V newV();
-
-    Context getRootContext();
-
-    void initData(Bundle savedInstanceState);
-
+    void detachV();
 }

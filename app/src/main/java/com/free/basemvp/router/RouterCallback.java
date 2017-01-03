@@ -2,7 +2,6 @@ package com.free.basemvp.router;
 
 import android.app.Activity;
 
-
 public interface RouterCallback {
 
     void onBefore(Activity from, Class<?> to);

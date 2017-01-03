@@ -9,7 +9,9 @@ import java.net.UnknownHostException;
 
 import rx.Subscriber;
 
-public abstract class ApiSubcriber<T> extends Subscriber<T> {
+
+public abstract class ApiSubcriber<T extends IModel> extends Subscriber<T> {
+
 
     @Override
     public void onError(Throwable e) {
@@ -42,6 +44,10 @@ public abstract class ApiSubcriber<T> extends Subscriber<T> {
 
     protected abstract void onFail(NetError error);
 
+    @Override
+    public void onCompleted() {
+
+    }
 
     protected boolean useCommonErrorHandler() {
         return true;

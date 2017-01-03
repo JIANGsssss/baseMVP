@@ -1,59 +1,66 @@
 package com.free.basemvp.mvp;
 
-import android.content.Context;
+import android.app.Activity;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.view.Menu;
+import android.view.View;
 
 import com.free.basemvp.XDroidConf;
 import com.free.basemvp.event.BusProvider;
+import com.free.basemvp.kit.KnifeKit;
 import com.tbruyelle.rxpermissions.RxPermissions;
 import com.trello.rxlifecycle.components.support.RxAppCompatActivity;
 
+import butterknife.Unbinder;
 
 
+public abstract class XActivity<P extends IPresent> extends RxAppCompatActivity implements IView<P> {
 
-public abstract class XActivity<V extends IView> extends RxAppCompatActivity implements IPresent<V> {
-
-    private PDelegate pDelegate;
-    private V v;
-    private Context context;
+    private VDelegate vDelegate;
+    private P p;
+    protected Activity context;
 
     private RxPermissions rxPermissions;
+
+    private Unbinder unbinder;
 
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
         context = this;
 
-        if (getV().getLayoutId() > 0) {
-            setContentView(getV().getLayoutId());
-            getV().bindUI(null);
-            getV().bindEvent();
+        if (getLayoutId() > 0) {
+            setContentView(getLayoutId());
+            bindUI(null);
+            bindEvent();
         }
-
         initData(savedInstanceState);
 
     }
 
-    protected PDelegate getpDelegate() {
-        if (pDelegate == null) {
-            pDelegate = PDelegateBase.create(this);
-        }
-        return pDelegate;
+    @Override
+    public void bindUI(View rootView) {
+        unbinder = KnifeKit.bind(this);
     }
 
-
-    protected V getV() {
-        if (v == null) {
-            v = newV();
-            v.attachP(this);
+    protected VDelegate getvDelegate() {
+        if (vDelegate == null) {
+            vDelegate = VDelegateBase.create(context);
         }
-        return v;
+        return vDelegate;
     }
 
+    protected P getP() {
+        if (p == null) {
+            p = newP();
+            if (p != null) {
+                p.attachV(this);
+            }
+        }
+        return p;
+    }
 
     @Override
     protected void onStart() {
@@ -63,16 +70,18 @@ public abstract class XActivity<V extends IView> extends RxAppCompatActivity imp
         }
     }
 
+
     @Override
     protected void onResume() {
         super.onResume();
-        getpDelegate().resume();
+        getvDelegate().resume();
     }
+
 
     @Override
     protected void onPause() {
         super.onPause();
-        getpDelegate().pause();
+        getvDelegate().pause();
     }
 
     @Override
@@ -84,37 +93,42 @@ public abstract class XActivity<V extends IView> extends RxAppCompatActivity imp
     }
 
     @Override
-    protected void onDestroy() {
-        super.onDestroy();
-        v = null;
-        getpDelegate().destory();
-        pDelegate = null;
-    }
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        if (getV().getOptionsMenuId() > 0) {
-            getMenuInflater().inflate(getV().getOptionsMenuId(), menu);
-        }
-        return super.onCreateOptionsMenu(menu);
-    }
-
-    protected RxPermissions getRxPermissions() {
-        if (rxPermissions == null) {
-            rxPermissions = new RxPermissions(this);
-            rxPermissions.setLogging(XDroidConf.DEV);
-        }
-        return rxPermissions;
-    }
-
-    @Override
     public boolean useEventBus() {
         return false;
     }
 
     @Override
-    public Context getRootContext() {
-        return context;
+    protected void onDestroy() {
+        super.onDestroy();
+        if (getP() != null) {
+            getP().detachV();
+        }
+        getvDelegate().destory();
+        p = null;
+        vDelegate = null;
     }
 
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        if (getOptionsMenuId() > 0) {
+            getMenuInflater().inflate(getOptionsMenuId(), menu);
+        }
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    protected RxPermissions getRxPermissions() {
+        rxPermissions = new RxPermissions(this);
+        rxPermissions.setLogging(XDroidConf.DEV);
+        return rxPermissions;
+    }
+
+    @Override
+    public int getOptionsMenuId() {
+        return 0;
+    }
+
+    @Override
+    public void bindEvent() {
+
+    }
 }

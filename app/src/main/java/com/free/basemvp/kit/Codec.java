@@ -31,7 +31,6 @@ import javax.crypto.spec.DESKeySpec;
 import javax.crypto.spec.SecretKeySpec;
 
 
-
 public class Codec {
     public static class MD5 {
 

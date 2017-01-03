@@ -16,7 +16,6 @@ import com.bumptech.glide.request.target.SimpleTarget;
 import java.io.File;
 
 
-
 public class GlideLoader implements ILoader {
 
     @Override

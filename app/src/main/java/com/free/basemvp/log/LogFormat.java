@@ -16,7 +16,6 @@ import javax.xml.transform.stream.StreamResult;
 import javax.xml.transform.stream.StreamSource;
 
 
-
 public class LogFormat {
 
     static final int JSON_INDENT = 4;

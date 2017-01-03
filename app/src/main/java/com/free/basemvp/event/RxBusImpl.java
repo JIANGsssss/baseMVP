@@ -6,7 +6,6 @@ import rx.subjects.SerializedSubject;
 import rx.subjects.Subject;
 
 
-
 public class RxBusImpl implements IBus {
 
     private final Subject<IEvent, IEvent> bus = new SerializedSubject<>(PublishSubject.<IEvent>create());

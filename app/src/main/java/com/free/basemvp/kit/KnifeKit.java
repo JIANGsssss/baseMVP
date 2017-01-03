@@ -8,7 +8,6 @@ import butterknife.ButterKnife;
 import butterknife.Unbinder;
 
 
-
 public class KnifeKit {
 
     public static Unbinder bind(Object target) {

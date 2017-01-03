@@ -1,7 +1,6 @@
 package com.free.basemvp.event;
 
 
-
 public interface IBus {
 
     void register(Object object);

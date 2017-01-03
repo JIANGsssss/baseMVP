@@ -1,6 +1,7 @@
 package com.free.basemvp.cache;
 
 
+
 public interface ICache {
     void put(String key, Object value);
 
