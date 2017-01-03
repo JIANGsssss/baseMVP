@@ -1,8 +1,13 @@
 # baseMVP
+
 baseMVP
+
 这是一个baseMVP框架
+
 from  https://github.com/limedroid/XDroidMvp
+
 如有疑问，请访问正版
+
 [![](https://jitpack.io/v/JIANGsssss/baseMVP.svg)](https://jitpack.io/#JIANGsssss/baseMVP)
 
 
