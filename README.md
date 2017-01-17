@@ -1,8 +1,12 @@
 # baseMVP
+
 baseMVP
+
 这是一个baseMVP框架
 
+from  https://github.com/limedroid/XDroidMvp
 
+如有疑问，请访问正版
 
 [![](https://jitpack.io/v/JIANGsssss/baseMVP.svg)](https://jitpack.io/#JIANGsssss/baseMVP)
 
@@ -23,7 +27,7 @@ Add it in your root build.gradle at the end of repositories:
 Step 2. Add the dependency
 
 	dependencies {
-	        compile 'com.github.JIANGsssss:baseMVP:1.1'
+	        compile 'com.github.JIANGsssss:baseMVP:1.2'
 	}
 
 
